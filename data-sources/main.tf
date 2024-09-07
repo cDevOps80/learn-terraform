@@ -24,5 +24,5 @@ data "aws_instances" "foo" {
 }
 
 output "aws_instances" {
-  value = data.aws_instance.foo
+  value = data.aws_instances.foo
 }
