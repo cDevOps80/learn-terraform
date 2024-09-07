@@ -15,18 +15,22 @@
 #  value = data.aws_ami_ids.ami
 #}
 
-data "aws_instances" "foo" {
+#data "aws_instances" "foo" {
+#
+#  instance_state_names = ["stopped"]
+#
+#  instance_tags = {
+#    Name = "main"
+#  }
+#
+#
+#
+#}
+#
+#output "aws_instances" {
+#  value = data.aws_instances.foo
+#}
 
-  instance_state_names = ["stopped"]
-
-  instance_tags = {
-    Name = "main"
-  }
-
-
-
-}
-
-output "aws_instances" {
-  value = data.aws_instances.foo
+data "external" "example" {
+  program = ["bash", "echo This is chaithanya"]
 }
