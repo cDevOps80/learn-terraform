@@ -7,7 +7,7 @@ data "aws_ami_ids" "ami" {
 
   filter {
     name   = "name"
-    values = ["^Centos-*"]
+    values = ["Centos-8-DevOps-Practice"]
   }
 }
 
