@@ -32,5 +32,5 @@
 #}
 
 data "external" "example" {
-  program = ["bash","-c","echo This is chaithanya"]
+  program = ["echo", "This is chaithanya"]
 }
