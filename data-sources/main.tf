@@ -7,7 +7,7 @@ data "aws_ami_ids" "ami" {
 
   filter {
     name   = "block-device-mapping.volume-type"
-    values = ["gp2"]
+    values = ["gp3"]
   }
 }
 
