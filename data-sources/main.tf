@@ -32,5 +32,6 @@
 #}
 
 data "external" "example" {
-  program = ["echo", "This is chaithanya"]
+  working_dir = "/home/centos"
+  program = ["bash","name"]
 }
