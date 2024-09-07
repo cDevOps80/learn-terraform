@@ -16,10 +16,10 @@
 #}
 
 data "aws_instances" "foo" {
-  filter {
-    name   = "instance-state-name"
-    values = ["stopped"]
-  }
+
+  instance_state_names = ["stopped"]
+
+
 
 }
 
