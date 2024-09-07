@@ -2,12 +2,8 @@
 
 data "aws_ami_ids" "ami" {
 
-  owners = ["amazon"]
-
-  filter {
-    name   = "name"
-    values = ["Amazon Linux 2.*"]
-  }
+  owners = [973714476881]
+  name_regex = "*.DevOps-Practice"
 
 }
 
