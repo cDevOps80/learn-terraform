@@ -37,5 +37,5 @@ data "external" "example" {
 }
 
 output "final" {
-  value = data.external.example
+  value = data.external.example.result["key1"]
 }
