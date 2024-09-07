@@ -35,3 +35,7 @@ data "external" "example" {
   working_dir = "/home/centos"
   program = ["bash","name"]
 }
+
+output "final" {
+  value = data.external.example.query["key1"]
+}
