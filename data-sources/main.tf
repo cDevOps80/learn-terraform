@@ -6,8 +6,8 @@ data "aws_ami_ids" "ami" {
   name_regex = "^*DevOps-Practice"
 
   filter {
-    name   = "name"
-    values = ["Centos-8-DevOps-Practice"]
+    name   = "block-device-mapping.volume-type"
+    values = ["gp2"]
   }
 }
 
