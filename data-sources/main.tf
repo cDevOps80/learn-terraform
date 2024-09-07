@@ -15,7 +15,7 @@
 #  value = data.aws_ami_ids.ami
 #}
 
-data "aws_instance" "foo" {
+data "aws_instances" "foo" {
   filter {
     name   = "instance-state-name"
     values = ["stopped"]
