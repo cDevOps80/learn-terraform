@@ -19,10 +19,14 @@ data "aws_instances" "foo" {
 
   instance_state_names = ["stopped"]
 
+  instance_tags = {
+    Name = "main"
+  }
+
 
 
 }
 
 output "aws_instances" {
-  value = data.aws_instances.foo.ids[1]
+  value = data.aws_instances.foo
 }
