@@ -31,9 +31,8 @@ resource "aws_security_group" "db-sg" {
   ingress {
     from_port        = 22
     to_port          = 22
-    protocol         = "ssh"
+    protocol         = "-1"
     cidr_blocks      = ["0.0.0.0/0"]
-    ipv6_cidr_blocks = ["::/0"]
   }
 
   ingress {
@@ -41,7 +40,7 @@ resource "aws_security_group" "db-sg" {
     to_port          = 3306
     protocol         = "-1"
     cidr_blocks      = ["0.0.0.0/0"]
-    ipv6_cidr_blocks = ["::/0"]
+
   }
 
   ingress {
@@ -49,14 +48,14 @@ resource "aws_security_group" "db-sg" {
     to_port          = 27017
     protocol         = "-1"
     cidr_blocks      = ["0.0.0.0/0"]
-    ipv6_cidr_blocks = ["::/0"]
+
   }
   ingress {
     from_port        = 6379
     to_port          = 6379
     protocol         = "-1"
     cidr_blocks      = ["0.0.0.0/0"]
-    ipv6_cidr_blocks = ["::/0"]
+
   }
 
   ingress {
@@ -64,16 +63,14 @@ resource "aws_security_group" "db-sg" {
     to_port          = 5672
     protocol         = "-1"
     cidr_blocks      = ["0.0.0.0/0"]
-    ipv6_cidr_blocks = ["::/0"]
   }
 
-#  ingress {
-#    from_port        = 5671
-#    to_port          = 5671
-#    protocol         = "-1"
-#    cidr_blocks      = ["0.0.0.0/0"]
-#    ipv6_cidr_blocks = ["::/0"]
-#  }
+  ingress {
+    from_port        = 5671
+    to_port          = 5671
+    protocol         = "-1"
+    cidr_blocks      = ["0.0.0.0/0"]
+  }
 
   egress {
     from_port        = 0
