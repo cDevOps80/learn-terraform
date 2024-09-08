@@ -1,5 +1,5 @@
 data "aws_default_vpc" "default" {
-
+  default = true
 }
 
 #variable "vpc_id" {
