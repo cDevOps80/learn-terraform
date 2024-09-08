@@ -1,4 +1,4 @@
-/*
+
 resource "aws_instance" "databases" {
   ami           = "ami-0a5c3558529277641"
   instance_type = "t3.micro"
@@ -19,14 +19,14 @@ resource "aws_instance" "databases" {
   }
 
   tags = {
-    Name = "databases-1"
+    Name = "roboshop-db"
   }
 }
 
 resource "aws_security_group" "db-sg" {
   name        = "allow_databases"
   description = "Allow TLS inbound traffic "
-  vpc_id      = var.vpc_id
+  vpc_id      = data.aws_vpc.default.id
 
   ingress {
     from_port        = 22
