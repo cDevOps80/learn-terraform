@@ -31,13 +31,13 @@ data "aws_instances" "foo" {
 #  value = data.aws_instances.foo
 #}
 
-/*
+
 data "external" "example" {
   working_dir = "/home/centos"
   program = ["bash","name"]
 }
-*/
-#
-#output "final" {
-#  value = data.external.example.result["key1"]
-#}
+
+
+output "final" {
+  value = data.external.example.result["key1"]
+}
