@@ -1,7 +1,8 @@
+/*
 resource "aws_instance" "databases" {
   ami           = "ami-0a5c3558529277641"
   instance_type = "t3.micro"
-  vpc_security_group_ids = ["sg-0665a56c7cd09a0e0"]
+  vpc_security_group_ids = [aws_security_group.db-sg.id]
   user_data = templatefile("./user.sh",{
     MYSQL_ROOT_PASSWORD   = "RoboShop@1"
     RABBITMQ_DEFAULT_USER = "roboshop"
@@ -19,6 +20,71 @@ resource "aws_instance" "databases" {
 
   tags = {
     Name = "databases-1"
+  }
+}
+
+resource "aws_security_group" "db-sg" {
+  name        = "allow_databases"
+  description = "Allow TLS inbound traffic "
+  vpc_id      = var.vpc_id
+
+  ingress {
+    from_port        = 22
+    to_port          = 22
+    protocol         = "ssh"
+    cidr_blocks      = ["0.0.0.0/0"]
+    ipv6_cidr_blocks = ["::/0"]
+  }
+
+  ingress {
+    from_port        = 3306
+    to_port          = 3306
+    protocol         = "-1"
+    cidr_blocks      = ["0.0.0.0/0"]
+    ipv6_cidr_blocks = ["::/0"]
+  }
+
+  ingress {
+    from_port        = 27017
+    to_port          = 27017
+    protocol         = "-1"
+    cidr_blocks      = ["0.0.0.0/0"]
+    ipv6_cidr_blocks = ["::/0"]
+  }
+  ingress {
+    from_port        = 6379
+    to_port          = 6379
+    protocol         = "-1"
+    cidr_blocks      = ["0.0.0.0/0"]
+    ipv6_cidr_blocks = ["::/0"]
+  }
+
+  ingress {
+    from_port        = 5672
+    to_port          = 5672
+    protocol         = "-1"
+    cidr_blocks      = ["0.0.0.0/0"]
+    ipv6_cidr_blocks = ["::/0"]
+  }
+
+  ingress {
+    from_port        = 5671
+    to_port          = 5671
+    protocol         = "-1"
+    cidr_blocks      = ["0.0.0.0/0"]
+    ipv6_cidr_blocks = ["::/0"]
+  }
+
+  egress {
+    from_port        = 0
+    to_port          = 0
+    protocol         = "-1"
+    cidr_blocks      = ["0.0.0.0/0"]
+    ipv6_cidr_blocks = ["::/0"]
+  }
+
+  tags = {
+    Name = "roboshopdb-sg"
   }
 }
 
