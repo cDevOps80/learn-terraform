@@ -68,7 +68,7 @@ resource "aws_security_group" "db-sg" {
   ingress {
     from_port        = 5671
     to_port          = 5671
-    protocol         = "-1"
+    protocol         = "tcp"
     cidr_blocks      = ["0.0.0.0/0"]
   }
 
