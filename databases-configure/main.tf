@@ -2,7 +2,11 @@ resource "aws_instance" "databases" {
   ami           = "ami-0a5c3558529277641"
   instance_type = "t3.micro"
   vpc_security_group_ids = ["sg-0665a56c7cd09a0e0"]
-  user_data = file("./user.sh")
+  user_data = templatefile("./user.sh",{
+    MYSQL_ROOT_PASSWORD   = "RoboShop@1"
+    RABBITMQ_DEFAULT_USER = "roboshop"
+    RABBITMQ_DEFAULT_PASS = "roboshop123"
+  })
   key_name = "nvirginia"
 
   instance_market_options {
