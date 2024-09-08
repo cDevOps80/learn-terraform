@@ -1,3 +1,4 @@
+/*
 resource "aws_instance" "databases" {
   ami           = "ami-0a5c3558529277641"
   instance_type = "t3.micro"
@@ -21,4 +22,13 @@ resource "aws_instance" "databases" {
     Name = "databases-1"
   }
 
+} */
+
+
+output "content" {
+  value = templatefile("./user.sh",{
+    MYSQL_ROOT_PASSWORD   = "RoboShop@1"
+    RABBITMQ_DEFAULT_USER = "roboshop"
+    RABBITMQ_DEFAULT_PASS = "roboshop123"
+  })
 }
