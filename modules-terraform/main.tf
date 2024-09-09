@@ -7,5 +7,5 @@ module "sg" {
 #}
 
 output "sg-final" {
-  value = module.sg.web-sg
+  value = lookup(module.sg.web-sg,"id","nothing")
 }
