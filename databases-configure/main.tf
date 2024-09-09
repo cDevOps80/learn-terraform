@@ -27,27 +27,21 @@ variable "ports" {
   default = {
     ssh = {
       port = 22
-      cidr_blocks = ["0.0.0.0/0"]
     }
     mysql = {
       port = 3306
-      cidr_blocks = ["0.0.0.0/0"]
     }
     redis = {
       port = 6379
-      cidr_blocks = ["0.0.0.0/0"]
     }
     mongod = {
       port = 27017
-      cidr_blocks = ["0.0.0.0/0"]
     }
     rabbitmq = {
       port = 5672
-      cidr_blocks = ["0.0.0.0/0"]
     }
     rabbitmq1 = {
       port = 5671
-      cidr_blocks = ["0.0.0.0/0"]
     }
   }
 }
@@ -57,13 +51,6 @@ resource "aws_security_group" "db-sg" {
   description = "Allow TLS inbound traffic "
   vpc_id      = data.aws_vpc.default.id
 
-#  ingress {
-#    from_port        = 22
-#    to_port          = 22
-#    protocol         = "tcp"
-#    cidr_blocks      = ["0.0.0.0/0"]
-#  }
-
   dynamic "ingress" {
     for_each = var.ports
     iterator = ports
@@ -72,47 +59,10 @@ resource "aws_security_group" "db-sg" {
       to_port          = ports.value.port
       description      = "${ports.key}-allowing"
       protocol         = "tcp"
-     # security_groups  = ["sg-0665a56c7cd09a0e0"]
-      #cidr_blocks      = ["sg-0665a56c7cd09a0e0"]
+     #security_groups  = ["sg-0665a56c7cd09a0e0"]
+      cidr_blocks      = ["0.0.0.0/0"]
     }
   }
-
-#  ingress {
-#    from_port        = 3306
-#    to_port          = 3306
-#    protocol         = "tcp"
-#    cidr_blocks      = ["0.0.0.0/0"]
-#
-#  }
-#
-#  ingress {
-#    from_port        = 27017
-#    to_port          = 27017
-#    protocol         = "tcp"
-#    cidr_blocks      = ["0.0.0.0/0"]
-#
-#  }
-#  ingress {
-#    from_port        = 6379
-#    to_port          = 6379
-#    protocol         = "tcp"
-#    cidr_blocks      = ["0.0.0.0/0"]
-#
-#  }
-
-#  ingress {
-#    from_port        = 5672
-#    to_port          = 5672
-#    protocol         = "tcp"
-#    cidr_blocks      = ["0.0.0.0/0"]
-#  }
-#
-#  ingress {
-#    from_port        = 5671
-#    to_port          = 5671
-#    protocol         = "tcp"
-#    cidr_blocks      = ["0.0.0.0/0"]
-#  }
 
   egress {
     from_port        = 0
