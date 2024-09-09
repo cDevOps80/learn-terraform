@@ -1,3 +1,3 @@
 output "web-sg" {
-  value = null
+  value = aws_security_group.web-sg.id
 }
