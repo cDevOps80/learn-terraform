@@ -35,4 +35,4 @@ variable "ports" {
     }
   }
 }
-*.
+*/
