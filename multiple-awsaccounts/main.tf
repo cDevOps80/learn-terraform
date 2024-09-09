@@ -13,7 +13,7 @@ resource "aws_instance" "us-east" {
   instance_type = "t2.micro"
 }
 
-resource "aws_instance" "us-east" {
+resource "aws_instance" "ap-south" {
   provider = aws.apsouth
   ami           = "ami-0888ba30fd446b771"
   instance_type = "t2.micro"
