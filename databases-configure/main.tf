@@ -72,7 +72,8 @@ resource "aws_security_group" "db-sg" {
       to_port          = ports.value.port
       description      = "${ports.key}-allowing"
       protocol         = "tcp"
-      cidr_blocks      = ["sg-0665a56c7cd09a0e0"]
+      security_groups  = ["sg-0665a56c7cd09a0e0"]
+      #cidr_blocks      = ["sg-0665a56c7cd09a0e0"]
     }
   }
 
