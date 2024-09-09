@@ -1,3 +1,3 @@
 output "web-sg" {
-  value = ""
+  value = null
 }
