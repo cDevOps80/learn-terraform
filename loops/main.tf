@@ -13,5 +13,5 @@ variable "instances" {
 }
 
 output "final" {
-  value = aws_instance.web.private_ip
+  value = aws_instance.web[1].private_ip
 }
