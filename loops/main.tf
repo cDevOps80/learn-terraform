@@ -9,5 +9,5 @@ resource "aws_instance" "web" {
 }
 
 variable "instances" {
-  default = [1,2]
+  default = [2,1]
 }
