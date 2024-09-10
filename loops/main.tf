@@ -11,11 +11,11 @@ resource "aws_instance" "web" {
 variable "instances" {
   default = [2,1]
 }
-
-output "final" {
-  value =  [ for ip in aws_instance.web : aws_instance.web.private_ip ]
-}
-
-output "final1" {
-  value =  aws_instance.web.*.private_ip
-}
+#
+#output "final" {
+#  value =  [ for ip in aws_instance.wprivate_ip ]
+#}
+#
+#output "final1" {
+#  value =  aws_instance.web.*.private_ip
+#}
