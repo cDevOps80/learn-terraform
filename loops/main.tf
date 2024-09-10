@@ -11,3 +11,7 @@ resource "aws_instance" "web" {
 variable "instances" {
   default = [2,1]
 }
+
+output "final" {
+  value = aws_instance.web
+}
