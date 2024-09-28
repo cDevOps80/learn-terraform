@@ -15,5 +15,5 @@ resource "aws_instance" "web" {
 }
 
 output "instances" {
-  value = aws_instance.web
+  value = [ for ips in aws_instance.web: ips.public_ip ]
 }
