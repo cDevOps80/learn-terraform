@@ -1,21 +1,15 @@
-resource "aws_instance" "web" {
-  count =        length(var.instances)
-  ami           = "ami-0a5c3558529277641"
-  instance_type = "t2.micro"
-
-  tags = {
-    Name = "test-${count.index}"
+variable "type" {
+  default = {
+    cart = "t2.micro"
+    user = "t3.small"
   }
 }
+resource "aws_instance" "web" {
+  for_each = var.type
+  ami           = "ami-0a5c3558529277641"
+  instance_type = each.value
 
-variable "instances" {
-  default = [2,1]
+  tags = {
+    Name = "${each.key}-test"
+  }
 }
-#
-#output "final" {
-#  value =  [ for ip in aws_instance.wprivate_ip ]
-#}
-#
-#output "final1" {
-#  value =  aws_instance.web.*.private_ip
-#}
