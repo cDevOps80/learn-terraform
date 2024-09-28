@@ -1,8 +1,13 @@
+#variable "type" {
+#  default = {
+#    cart = "t2.micro"
+#    user = "t3.small"
+#  }
+#}
+
 variable "type" {
-  default = {
-    cart = "t2.micro"
-    user = "t3.small"
-  }
+  default = ["t2.micro","t3.small"]
+
 }
 resource "aws_instance" "web" {
   # for_each = var.type
