@@ -5,15 +5,16 @@ variable "type" {
   }
 }
 resource "aws_instance" "web" {
-  for_each = var.type
+  # for_each = var.type
+  count = length(var.type)
   ami           = "ami-0a5c3558529277641"
-  instance_type = each.value
+  instance_type = "t3.micro"
 
   tags = {
-    Name = "${each.key}-test"
+    Name = "${element(var.type,count.index)}-test"
   }
 }
 
 output "instances" {
-  value = { for key,ips in aws_instance.web: key => ips.public_ip if length(ips.public_ip) <= 12 }
+  value = { for key,ips in aws_instance.web: key => ips.public_ip }
 }
