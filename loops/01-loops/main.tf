@@ -1,6 +1,7 @@
 variable "instance_type" {
-  default = ["t2.micro","t3.small","t3.medium"]
+  default = ["t2.micro","t3.small","t3.medium",1]
 }
+
 
 resource "aws_instance" "web" {
   for_each = toset(var.instance_type)
