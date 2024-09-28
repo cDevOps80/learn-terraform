@@ -13,3 +13,7 @@ resource "aws_instance" "web" {
     Name = "${each.key}-test"
   }
 }
+
+output "instances" {
+  value = aws_instance.web.*.public_ip
+}
