@@ -23,3 +23,7 @@ resource "aws_instance" "web" {
 output "instances" {
   value = { for key,ips in aws_instance.web: key => ips.public_ip }
 }
+
+output "instances-list" {
+  value = aws_instance.web.*.public_ip
+}
