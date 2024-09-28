@@ -15,5 +15,5 @@ resource "aws_instance" "web" {
 }
 
 output "instances" {
-  value = { for key,ips in aws_instance.web: key => ips.public_ip if length(ips.public_ip) > 12 }
+  value = { for key,ips in aws_instance.web: key => ips.public_ip if length(ips.public_ip) <= 12 }
 }
