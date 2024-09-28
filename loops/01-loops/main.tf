@@ -3,7 +3,7 @@ variable "instance_type" {
 }
 
 resource "aws_instance" "web" {
-  for_each = var.instance_type
+  for_each = toset(var.instance_type)
   ami           = "ami-0a5c3558529277641"
   instance_type = "t3.micro"
 
