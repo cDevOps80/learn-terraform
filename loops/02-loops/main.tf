@@ -1,4 +1,4 @@
-variable "loop1" {
+variable "loop1 {
   default = ["one","two","three",4]
 }
 
