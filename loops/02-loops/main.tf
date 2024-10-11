@@ -20,9 +20,14 @@ locals {
 output "one2" {
   value = [for key,ip in local.sample: key => ip.public_ip ]
 }
-output "one1" {
-  value = aws_instance.sample
+
+output "one4" {
+value = [for ip in local.sample: ip.public_ip ]
 }
-output "one" {
-  value = [ for i in aws_instance.sample : i.id ]
-}
+
+#output "one1" {
+#  value = aws_instance.sample
+#}
+#output "one" {
+#  value = [ for i in aws_instance.sample : i.id ]
+#}
