@@ -5,7 +5,7 @@ variable "loop1" {
 resource "aws_instance" "sample" {
   count         =  length(var.loop1)
   ami           = "ami-00f251754ac5da7f0"
-  instance_typee = "t2.micro"
+  instance_type = "t2.micro"
 
   tags = {
     Name = "web-${element(var.loop1,count.index)}"
