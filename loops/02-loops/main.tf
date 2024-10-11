@@ -13,6 +13,9 @@ resource "aws_instance" "sample" {
   }
 }
 
+output "one1" {
+  value = aws_instance.sample
+}
 output "one" {
   value = [ for i in aws_instance.sample : i.id ]
 }
