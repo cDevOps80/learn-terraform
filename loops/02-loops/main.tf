@@ -13,6 +13,13 @@ resource "aws_instance" "sample" {
   }
 }
 
+locals {
+  sample = aws_instance.sample
+}
+
+output "one2" {
+  value = local.sample
+}
 output "one1" {
   value = aws_instance.sample
 }
