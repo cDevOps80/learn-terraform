@@ -13,18 +13,3 @@ resource "aws_instance" "sample" {
   }
 }
 
-locals {
-  sample = aws_instance.sample
-}
-
-output "one2" {
-  value = { for one, ip in local.sample: one => ip.public_ip }
-}
-
-
-#output "one1" {
-#  value = aws_instance.sample
-#}
-#output "one" {
-#  value = [ for i in aws_instance.sample : i.id ]
-#}
