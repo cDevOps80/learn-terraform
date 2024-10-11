@@ -14,5 +14,5 @@ resource "aws_instance" "sample" {
 }
 
 output "one" {
-  value = toset(aws_instance.sample[*].id)
+  value = [ for i in aws_instance.sample : i.id ]
 }
