@@ -8,6 +8,7 @@ resource "aws_instance" "sample" {
   instance_type = "t2.micro"
 
   tags = {
-    Name = "web-${element(var.loop1,count.index)}"
+   # Name = "web-${element(var.loop1,count.index)}"
+    Name = "web-${count.index}"
   }
 }
