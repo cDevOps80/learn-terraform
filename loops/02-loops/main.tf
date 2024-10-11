@@ -18,7 +18,7 @@ locals {
 }
 
 output "one2" {
-  value = local.sample["one"].public_ip
+  value = [for key,ip in local.sample: key => ip.public_ip ]
 }
 output "one1" {
   value = aws_instance.sample
