@@ -10,6 +10,9 @@ resource "aws_instance" "sample" {
 
   tags = {
    Name = "web-${each.value}"
-
   }
+}
+
+output "one" {
+  value = aws_instance.sample[*].id
 }
