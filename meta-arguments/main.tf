@@ -20,8 +20,14 @@ resource "aws_instance" "sample" {
 
 resource "null_resource" "one" {
   provisioner "local-exec" {
-    command = "bash ${path.module}/run.sh"
+    command = "bash ${local.run_sh}"
   }
+}
+
+locals {
+  run_sh = templatefile("${path.module}/run.sh",{
+    name = "chaitu"
+  })
 }
 
 
