@@ -1,3 +1,4 @@
+/*
 resource "aws_instance" "sample" {
   ami           = "ami-00f251754ac5da7f0"
   instance_type = "t2.medium"
@@ -12,6 +13,13 @@ resource "aws_instance" "sample" {
   }
   tags = {
     Name = "web-1"
-    Name = "web-2"
+
+  }
+}
+*/
+
+resource "null_resource" "one" {
+  provisioner "local-exec" {
+    command = "bash  \"${templatefile("${path.module}/run.sh",{name = chaitu })}\" "
   }
 }
