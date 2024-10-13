@@ -30,10 +30,16 @@ resource "aws_instance" "sample" {
 
 
 locals {
-  time = "timestamp()-chaitu"
+  time = "chaitu"
 }
-output "good" {
-  value = local.time
+
+resource "null_resource" "one" {
+  triggers = {
+    good = local.time
+  }
+  provisioner "local-exec" {
+    command = "echo This is chaitu"
+  }
 }
 
 
