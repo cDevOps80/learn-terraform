@@ -9,5 +9,6 @@ resource "aws_instance" "sample" {
   }
   tags = {
     Name = "web-1"
+    Name = "web-2"
   }
 }
