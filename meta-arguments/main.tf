@@ -4,7 +4,7 @@ resource "aws_instance" "sample" {
 
   lifecycle {
     ignore_changes = [
-      aws_instance.sample.instance_type
+      instance_type
     ]
   }
   tags = {
