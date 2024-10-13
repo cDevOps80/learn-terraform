@@ -4,6 +4,7 @@ resource "aws_instance" "sample" {
   availability_zone = "us-east-1a"
 
   lifecycle {
+    create_before_destroy = true
     ignore_changes = [
       instance_type,
       tags
