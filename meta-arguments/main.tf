@@ -18,24 +18,22 @@ resource "aws_instance" "sample" {
 }
 */
 
-resource "null_resource" "one9" {
-  triggers = {
-    time = timestamp()
-  }
-  provisioner "local-exec" {
-    command = "yum install nginx -y"
-  }
-}
+#resource "null_resource" "one9" {
+#  triggers = {
+#    time = timestamp()
+#  }
+#  provisioner "local-exec" {
+#    command = "yum install nginx -y"
+#  }
+#}
+
+
 
 locals {
-  run_sh = templatefile("${path.module}/run.sh",{
-    name1 = "chaitu7"
-    name4 = "chaitu4"
-    name3 = "chaitu4"
-  })
+  time = "${timestamp()}-chaitu"
 }
-
-
-
+output "good" {
+  value = local.time
+}
 
 
