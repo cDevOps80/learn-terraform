@@ -19,6 +19,9 @@ resource "aws_instance" "sample" {
 */
 
 resource "null_resource" "one9" {
+  triggers = {
+    time = timestamp()
+  }
   provisioner "local-exec" {
     command = "yum install nginx -y"
   }
