@@ -20,7 +20,7 @@ resource "aws_instance" "sample" {
 
 resource "null_resource" "one1" {
   provisioner "local-exec" {
-    command = "bash ${local.run_sh}"
+    command = "bash -c ${local.run_sh}"
   }
 }
 
