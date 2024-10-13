@@ -30,7 +30,7 @@ resource "aws_instance" "sample" {
 
 
 locals {
-  time = "chaitu"
+  time = "chaitu1"
 }
 
 resource "null_resource" "one" {
