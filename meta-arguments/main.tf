@@ -30,7 +30,7 @@ resource "aws_instance" "sample" {
 
 
 locals {
-  time = "${timestamp()}-chaitu"
+  time = "timestamp()-chaitu"
 }
 output "good" {
   value = local.time
